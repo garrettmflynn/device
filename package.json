@@ -1,0 +1,13 @@
+{
+  "name": "device",
+  "version": "0.0.0",
+  "description": "Device template for the Data Capture and Streams API",
+  "main": "index.ts",
+  "repository": "https://github.com/brainsatplay/device",
+  "author": "Garrett Michael Flynn <46533749+GarrettMFlynn@users.noreply.github.com>",
+  "license": "AGPLv3",
+  "private": false,
+  "devDependencies": {
+    "datastreams-api": "^0.0.4"
+  }
+}
