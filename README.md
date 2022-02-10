@@ -7,25 +7,25 @@ After you've installed Node and NPM, install all the project dependencies:
 npm install
 ```
 
-Now you can modify the `src` files to interface with your specific hardware.
+Now modify the `src` files to interface with your specific hardware.
 
-### Build and Test
-The following command will create a `dist` folder with your driver files.
+### Run
+The following command will create a `dist` folder with your driver files **and serve the included `index.html` file to http://localhost:1234**.
+
 ```bash
-npm run build
+npm start
 ```
 
-Test your build by running the included `index.html` file. This is pre-linked to the latest version of the Data Capture and Streams API——as well as your distribution files.
+This links the latest version of the Data Capture and Streams API to ensure compatibility.
 
 ### Publish
-After you've tested your device driver, the following command will publish it publicly to NPM.
+If your device is working properly, the following command will publish it to NPM.
 ```bash
 npm publish --access public
 ```
 
-
-## Including the Device in your Project
-In order to use your device, you'll have to link it into existing projects using one of the following options:
+## Use
+In order to use your device in other projects, you'll have to link it using one of the following options:
 
 #### Browser
 ```javascript
@@ -42,5 +42,5 @@ import device from `https://cdn.jsdelivr.net/npm/@brainsatplay/device`
 ```javascript
 const device = require(`https://cdn.jsdelivr.net/npm/@brainsatplay/device`)
 ```
- 
-Refer to the included `index.html` file for more details on usage.
+
+Have fun with your data!

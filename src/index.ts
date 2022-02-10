@@ -1,6 +1,6 @@
 import { ondata, onconnect, ondisconnect, encode, decode } from './device.utils'
 
-export const device = {
+const device = {
 
     // ----------------- Required Device Attributes -----------------
     label: 'Device', // Unique device name to reference
@@ -19,7 +19,7 @@ export const device = {
 
     // Bluetooth
     // namePrefix: 'HEG', // Filter for specified name from Bluetooth results (required if device should be selectable with a loose constraint (e.g. {bluetooth: true}))
-    serviceUUID: '6e400001-b5a3-f393-e0a9-e50e24dcca9e',
+    // serviceUUID: '6e400001-b5a3-f393-e0a9-e50e24dcca9e',
     characteristics: {
         transmit: '6e400003-b5a3-f393-e0a9-e50e24dcca9e',
         receive: '6e400002-b5a3-f393-e0a9-e50e24dcca9e',

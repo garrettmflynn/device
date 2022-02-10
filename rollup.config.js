@@ -1,5 +1,5 @@
 // Install Rollup Plugins
-// yarn add rollup @babel/core @rollup/plugin-commonjs @babel/preset-env @web/rollup-plugin-copy @rollup/plugin-node-resolve rollup-plugin-minify-html-literals rollup-plugin-summary rollup-plugin-typescript2 rollup-plugin-terser rollup-plugin-import-css @rollup/plugin-node-resolve @rollup/plugin-babel @babel/plugin-proposal-class-properties -D
+// yarn add rollup @babel/core @rollup/plugin-commonjs @babel/preset-env @rollup/plugin-node-resolve rollup-plugin-minify-html-literals rollup-plugin-summary rollup-plugin-typescript2 rollup-plugin-terser rollup-plugin-import-css @rollup/plugin-node-resolve @rollup/plugin-babel @babel/plugin-proposal-class-properties -D
 
 import resolve from '@rollup/plugin-node-resolve';
 import minifyHTML from 'rollup-plugin-minify-html-literals';
@@ -24,15 +24,18 @@ const config = {
   output: [
     {
       file: pkg.main,
-      format: 'cjs'
+      format: 'cjs',
+      exports: 'default'
     },
     {
       file: pkg.module,
-      format: 'es'
+      format: 'es',
+      exports: 'default'
     },
     {
       file: pkg.browser,
       format: 'iife',
+      exports: 'default',
       name: 'device' // Global Variable Name
     }
   ],

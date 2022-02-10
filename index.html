@@ -6,44 +6,56 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Brains@Play Template Device</title>
     <script src="https://cdn.jsdelivr.net/npm/datastreams-api"></script>
-    <!-- <script src="./dist/browser.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/@brainsatplay/device"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@brainsatplay/device"></script> -->
+    <script src="./dist/browser.js"></script>
+
 </head>
 <body>
+    <button>Connect to Device</button>
+    <div></div>
+
 
     <script type="module">
+
+        // ------------------------------------------------
+        // Test the Library on the Data Capture and Streams API (latest)
+        // ------------------------------------------------
         
-        // ------------------------------------------------
-        // 1. Validate Import Syntax
-        // ------------------------------------------------
+        // // Optional: Import using ES6 Syntax
+        // import device from './dist/module.js'
 
-        // Browser Check
-        console.log(device)
-
-        // Module Check
-        import device from './dist/module.js'
-        // import device from 'https://cdn.jsdelivr.net/npm/@brainsatplay/device'
-        console.log(device)
-
-        // ------------------------------------------------
-        // 2. Test the Library on the Data Capture and Streams API (latest)
-        // ------------------------------------------------
+        // Create DataDevices Instance
         const dataDevices = new datastreams.DataDevices()
 
-        // Option A: Load device then filter for it (no config required for only device)
-        dataDevices.load(device)
-        const activeDevice = await dataDevices.getUserDevice()
+        // Press Button to Connect Device
+        const button = document.body.querySelector('button')
+        const div = document.body.querySelector('div')
+        button.onclick = async () => {
 
-        // Option B: Pass the device directly
-        // const device = await dataDevices.getUserDevice(device)
+            // Option A: Load device then filter for it (no config required for only device)
+            dataDevices.load(device)
+            const activeDevice = await dataDevices.getUserDevice()
 
-        console.log('Device', activeDevice)
+            // Option B: Pass the device directly
+            // const device = await dataDevices.getUserDevice(device)
 
-        // Subscribe to Tracks in the Device Data Stream
-        activeDevice.stream.tracks.forEach((t,i) => {
-            console.log('Track', t)
-            t.subscribe((data) => console.log(`Track ${i}`, data))
-        })
+            console.log('Device', activeDevice)
+
+            // Subscribe to Tracks in the Device Data Stream
+            activeDevice.stream.tracks.forEach((t,i) => {
+                const readout = document.createElement('p')
+                const strong = document.createElement('strong')
+                strong.innerHTML = `Track ${t.contentHint}: `
+                const span = document.createElement('span')
+                readout.insertAdjacentElement('beforeend', strong)
+                readout.insertAdjacentElement('beforeend', span)
+                div.insertAdjacentElement('beforeend', readout)
+                t.subscribe((data) => {
+                    span.innerHTML = data
+                })
+            })
+        }
+
         
     </script>
     
