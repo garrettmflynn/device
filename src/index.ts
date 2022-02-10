@@ -1,11 +1,9 @@
 import { ondata, onconnect, ondisconnect, encode, decode } from './device.utils'
 
-// This must be of the DeviceConstraintsType from the datastreams-api
 export const device = {
 
     // ----------------- Required Device Attributes -----------------
-    label: 'Device', // Device name to reference
-    kind: 'fnirsinput', // Expected data type
+    label: 'Device', // Unique device name to reference
 
     // ----------------- Device Behavior -----------------
 
@@ -20,23 +18,23 @@ export const device = {
     // ----------------- Device Protocols -----------------
 
     // Bluetooth
-    // namePrefix: 'HEG', // Filter for specified name from Bluetooth results
+    // namePrefix: 'HEG', // Filter for specified name from Bluetooth results (required if device should be selectable with a loose constraint (e.g. {bluetooth: true}))
     serviceUUID: '6e400001-b5a3-f393-e0a9-e50e24dcca9e',
     characteristics: {
         transmit: '6e400003-b5a3-f393-e0a9-e50e24dcca9e',
         receive: '6e400002-b5a3-f393-e0a9-e50e24dcca9e',
     }, 
-    // bluetooth: true,             // Force Bluetooth Connection (optional)
 
     // Serial / USB
     usbVendorId: 4292,
     usbProductId: 60000,
-    // serial: true,                // Force Serial Connection (optional)
+    bufferSize: 1000,
+    baudRate: 115200,
 
     // WebSocket / Wifi
-    url: 'https://localhost'
-    // wifi: true,                  // Force Wifi Connection (optional)
-    // websocket: true,             // Force Websocket Connection (optional)
+    url: 'https://localhost',
+
+    protocols: ['serial', 'bluetooth', 'websocket']
 
 }
 

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Brains@Play Template Device</title>
+    <script src="https://cdn.jsdelivr.net/npm/datastreams-api"></script>
+    <!-- <script src="./dist/browser.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/@brainsatplay/device"></script>
+</head>
+<body>
+
+    <script type="module">
+        
+        // ------------------------------------------------
+        // 1. Validate Import Syntax
+        // ------------------------------------------------
+
+        // Browser Check
+        console.log(device)
+
+        // Module Check
+        import device from './dist/module.js'
+        // import device from 'https://cdn.jsdelivr.net/npm/@brainsatplay/device'
+        console.log(device)
+
+        // ------------------------------------------------
+        // 2. Test the Library on the Data Capture and Streams API (latest)
+        // ------------------------------------------------
+        const dataDevices = new datastreams.DataDevices()
+
+        // Option A: Load device then filter for it (no config required for only device)
+        dataDevices.load(device)
+        const activeDevice = await dataDevices.getUserDevice()
+
+        // Option B: Pass the device directly
+        // const device = await dataDevices.getUserDevice(device)
+
+        console.log('Device', activeDevice)
+
+        // Subscribe to Tracks in the Device Data Stream
+        activeDevice.stream.tracks.forEach((t,i) => {
+            console.log('Track', t)
+            t.subscribe((data) => console.log(`Track ${i}`, data))
+        })
+        
+    </script>
+    
+</body>
+</html>
