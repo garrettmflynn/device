@@ -2,13 +2,17 @@
 Template Driver for the Data Capture and Streams API
 
 ## Getting Started 
-1. Ensure that you have Node and NPM installed.
-2. Modify the `src` files to interface with your specific hardware
+After you've installed Node and NPM, install all the project dependencies: 
+```bash
+npm install
+```
+
+Now you can modify the `src` files to interface with your specific hardware.
 
 ### Build and Test
 The following command will create a `dist` folder with your driver files.
 ```bash
-npm build
+npm run build
 ```
 
 Test your build by running the included `index.html` file. This is pre-linked to the latest version of the Data Capture and Streams API——as well as your distribution files.
