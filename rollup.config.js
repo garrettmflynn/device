@@ -24,21 +24,15 @@ const config = {
   output: [
     {
       file: pkg.main,
-      format: 'cjs',
-      exports: 'default'
+      format: 'umd', // the preferred format
+      exports: 'named',
+      name: 'device'
     },
     {
-      file: pkg.module,
-      format: 'es',
-      exports: 'default'
-    },
-    {
-      file: pkg.browser,
-      format: 'iife',
-      exports: 'default',
-      name: 'device' // Global Variable Name
+     file: pkg.module,
+     format: 'es' // the preferred format
     }
-  ],
+   ],
 
   // Add Rollup Plugins
   plugins: [
