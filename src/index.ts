@@ -3,7 +3,7 @@ import { ondata, onconnect, ondisconnect, encode, decode } from './device.utils'
 const device = {
 
     // ----------------- Required Device Attributes -----------------
-    label: 'Device', // Unique device name to reference
+    label: 'device', // Unique device name to reference
 
     // ----------------- Device Behavior -----------------
 
